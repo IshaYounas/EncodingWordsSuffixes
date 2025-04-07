@@ -1,0 +1,13 @@
+INDEX VERSION 1.134+C:\Users\ishay\OneDrive - Atlantic TU\Data Structures & Algorithms Y2 S2\.metadata\.plugins\org.eclipse.jdt.core
+2725142083.index
+3818376956.index
+1865797976.index
+1281376111.index
+3705611006.index
+996610041.index
+3580456661.index
+1047923739.index
+1259207542.index
+2883064424.index
+2768476762.index
+1636074616.index
