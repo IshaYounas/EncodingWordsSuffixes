@@ -1,8 +1,14 @@
 package ie.atu.sw;
 
-public class Runner {
+// imports
+import java.util.Scanner;
+import java.util.Map;
+import java.util.TreeMap;
 
-	public static void main(String[] args) throws Exception {
+public class Runner
+{
+	public static void main(String[] args) throws Exception 
+	{
 		//You should put the following code into a menu or Menu class
 		System.out.println(ConsoleColour.WHITE);
 		System.out.println("************************************************************");
@@ -29,14 +35,62 @@ public class Runner {
 		//You may want to include a progress meter in you assignment!
 		System.out.print(ConsoleColour.YELLOW);	//Change the colour of the console text
 		int size = 100;							//The size of the meter. 100 equates to 100%
-		for (int i =0 ; i < size ; i++) {		//The loop equates to a sequence of processing steps
+		for (int i =0 ; i < size ; i++) //The loop equates to a sequence of processing steps
+		{		
 			printProgress(i + 1, size); 		//After each (some) steps, update the progress meter
 			Thread.sleep(10);					//Slows things down so the animation is visible 
-		}
+		} // for
 		
-	}
-	
-
+		// implementation
+		Scanner keyboard = new Scanner(System.in);
+		
+		// variables
+		String csvFile = "";
+		String fileIn = "";
+		String fileOut = "./output.txt"; // default
+		String option;
+		Map<String, Integer> map = new TreeMap<>();	
+		
+		boolean running = true;
+		
+		while (running) // program is still running
+		{
+			// prompting the user for input
+			System.out.println("Select Option [1-6 or ?]");
+			option = keyboard.nextLine();
+			
+			switch (option)
+			{
+				case "1":
+					System.out.println("Enter path to mappinng CSV file");
+					csvFile = keyboard.nextLine();
+					break;
+					
+				case "2":
+					System.out.println("Enter path to text file to encode");
+					fileIn = keyboard.nextLine();
+					break;
+					
+				case "3":
+					System.out.println("Enter path to output file (default: output.txt)");
+					fileOut = keyboard.nextLine();
+					break;
+					
+				case "4":
+					System.out.println("Configure options");
+					break;
+					
+				case "5":
+					System.out.println("Encoding the text file");	
+					
+				case "6":
+					System.out.println("Decoding the text file");	
+					
+				case "?":
+					System.out.println("Quiting the program, goodbye!");	
+			} // switch
+		} // while		
+	} // main
 	
 	/*
 	 *  Terminal Progress Meter
@@ -61,7 +115,9 @@ public class Runner {
 	 *     work properly.  
 	 *  
 	 * 
+	 * 
 	 */
+	
 	public static void printProgress(int index, int total) {
 		if (index > total) return;	//Out of range
         int size = 50; 				//Must be less than console width
@@ -81,9 +137,10 @@ public class Runner {
          */
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) 
+        {
         	sb.append((i < completeLen) ? done : todo);
-        }
+        } // for
         
         /*
          * The line feed escape character "\r" returns the cursor to the 
