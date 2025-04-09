@@ -87,6 +87,20 @@ public class Runner
 					
 				case "5":
 					System.out.println("Encoding the text file");	
+					
+					if (fileIn.isEmpty())
+					{
+						System.out.println("Please specify the input file to encode");
+						fileIn = keyboard.nextLine();
+					} // if
+					
+					else
+					{
+						// creating an instance of the encoding class
+						Encoding encoder = new Encoding(map); 
+						encoder.encode(fileIn, fileOut);
+					} // else
+						
 					break;
 					
 				case "6":
