@@ -1,13 +1,11 @@
 package ie.atu.sw;
 
 // imports
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.*; // file & scanner
 import java.util.Map;
 import java.util.TreeMap;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Runner
 {
@@ -88,11 +86,15 @@ public class Runner
 				case "5":
 					System.out.println("Encoding the text file");	
 					
-					if (fileIn.isEmpty())
+					if (map.isEmpty())
+					{
+						System.out.println("Please load mapping file first");
+					} // if
+					
+					else if (fileIn.isEmpty())
 					{
 						System.out.println("Please specify the input file to encode");
-						fileIn = keyboard.nextLine();
-					} // if
+					} // else if
 					
 					else
 					{
@@ -105,6 +107,31 @@ public class Runner
 					
 				case "6":
 					System.out.println("Decoding the text file");	
+				
+					if (map.isEmpty())
+					{
+						System.out.println("Please load mapping file first");
+					} // if
+					
+					else if (fileIn.isEmpty())
+					{
+						System.out.println("Please specify the encoded input file to decode");
+					} // else if
+					
+					else
+					{
+						Map<Integer, String> reverseMap = new TreeMap<>();
+						
+						for (Map.Entry<String, Integer> entry : map.entrySet()) 
+						{
+							reverseMap.put(entry.getValue(), entry.getKey());
+						} // for(each)
+						
+						// creating an instance of the encoding class
+						Decoding decoder = new Decoding(reverseMap); 
+						decoder.decode(fileIn, fileOut);
+					} // else
+					
 					break;
 					
 				case "?":

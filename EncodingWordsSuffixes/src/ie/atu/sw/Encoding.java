@@ -4,8 +4,8 @@ package ie.atu.sw;
 import java.util.Map;
 import java.io.*; // files
 
-public class Encoding 
-{
+public class Encoding // converting words to numbers
+{	
 	// instance variables
 	private Map<String, Integer> mappings;
 
