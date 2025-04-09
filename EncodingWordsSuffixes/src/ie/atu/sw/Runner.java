@@ -2,6 +2,10 @@ package ie.atu.sw;
 
 // imports
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -64,6 +68,7 @@ public class Runner
 				case "1":
 					System.out.println("Enter path to mappinng CSV file");
 					csvFile = keyboard.nextLine();
+					map = loadMap(csvFile);
 					break;
 					
 				case "2":
@@ -82,15 +87,55 @@ public class Runner
 					
 				case "5":
 					System.out.println("Encoding the text file");	
+					break;
 					
 				case "6":
 					System.out.println("Decoding the text file");	
+					break;
 					
 				case "?":
 					System.out.println("Quiting the program, goodbye!");	
+					break;
+					
+				default:
+					System.out.println("Invalid option. Please try again!");
 			} // switch
 		} // while		
+		
+		keyboard.close();
 	} // main
+	
+	private static Map<String, Integer> loadMap(String filename)
+	{
+		Map<String, Integer> map = new TreeMap<>();
+		
+		try (BufferedReader read = new BufferedReader(new FileReader(filename)))
+		{
+			String line;
+			
+			while ((line = read.readLine()) != null)
+			{
+				String[] pair = line.split(","); // splitting by comma
+				
+				if (pair.length == 2)
+				{
+					// storing - lower case and parsing the integer
+					map.put(pair[0].toLowerCase(), Integer.parseInt(pair[1]));
+				} // if
+			} // while
+			
+			// printing the size of the map
+			System.out.println("Loaded " + map.size() + " successfully");
+		} // try
+		
+		catch (Exception e) 
+		{
+			System.err.println("Error: " + e.getMessage());
+		} // catch
+		
+		return map;
+	} // loadMap
+	
 	
 	/*
 	 *  Terminal Progress Meter
