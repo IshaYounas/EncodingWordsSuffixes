@@ -33,6 +33,19 @@ public class Encoding // converting words to numbers
 				{
 					Integer encodedVal = mappings.get(word.toLowerCase());
 					
+					if (encodedVal == null) // word not in map
+					{
+						for (String key : mappings.keySet()) // check for suffix
+						{
+							if (word.toLowerCase().endsWith(key))
+							{
+								encodedVal = mappings.get(key);
+								break;
+							} // if
+						} // for(each)
+						encodedLine.append(encodedVal).append(" ");
+					} // if
+					
 					if (encodedVal != null) // word is in map
 					{
 						encodedLine.append(encodedVal).append(" ");
