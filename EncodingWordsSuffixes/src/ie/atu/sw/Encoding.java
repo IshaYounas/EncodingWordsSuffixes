@@ -15,6 +15,7 @@ public class Encoding // converting words to numbers
 		this.mappings = mappings;
 	} // Encoding
 	
+	// O(n^2) - quadratic - reading each word of the line, every line
 	public void encode(String in, String out)
 	{
 		try (BufferedReader read = new BufferedReader(new FileReader(in));

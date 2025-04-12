@@ -11,6 +11,7 @@ public class LoadFile
 	private Map<String, Integer> m = new TreeMap<>(); // type string & integer
 	
 	// custom methods
+	// O(n) - linear - reading every line in the csv file
 	public void parse(String file)
 	{
 		try (var in = new BufferedInputStream(new FileInputStream(new File (file))))

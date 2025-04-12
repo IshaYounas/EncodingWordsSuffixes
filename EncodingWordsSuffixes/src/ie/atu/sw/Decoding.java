@@ -15,12 +15,6 @@ public class Decoding // converting numbers to words
 	{
 		this.reverseMap= new TreeMap<>();
 		
-		/*
-		// reversing key-vale pairs from encoded map
-		for (Map.Entry<Integer, String> entry : mappings.entrySet()) 
-		{
-			reverseMap.put(entry.getKey(), entry.getValue());
-		} // for(each) */
 	} // Decoding
 	
 	public void decode(String in, String out)
@@ -62,13 +56,13 @@ public class Decoding // converting numbers to words
 				} // for(each)
 				
 				// DEBUG
-				System.out.println("Decoded line: " + decodedLine.toString());
+				//System.out.println("Decoded line: " + decodedLine.toString());
 				
 				write.write(decodedLine.toString().trim());
 				write.newLine();
 			} // while
 			
-			write.flush(); // DEBUG
+			//write.flush(); // DEBUG
 			System.out.println("Decoding complete, saved to " + out);
 		} // try
 		
