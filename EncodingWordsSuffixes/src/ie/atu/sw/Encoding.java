@@ -43,24 +43,33 @@ public class Encoding // converting words to numbers
 								break;
 							} // if
 						} // for(each)
-						encodedLine.append(encodedVal).append(" ");
+						
+						// if suffix match is found
+						if (encodedVal != null) // word is in map
+						{
+							encodedLine.append(encodedVal).append(" ");
+						} // if
+						
+						else // word not in map
+						{
+							encodedLine.append(" unknown ??? ");
+						} // else
 					} // if
 					
-					if (encodedVal != null) // word is in map
+					else // word is in map
 					{
 						encodedLine.append(encodedVal).append(" ");
-					} // if
-					
-					else // word not in map
-					{
-						encodedLine.append(" unknown ??? ");
 					} // else
 				} // for(each)
+				
+				// DEBUG
+				//System.out.println("Encoded line: " + encodedLine.toString());
 				
 				write.write(encodedLine.toString().trim());
 				write.newLine();
 			} // while
 			
+			//write.flush(); // DEBUG
 			System.out.println("Encoding complete, saved to " + out);
 		} // try
 		

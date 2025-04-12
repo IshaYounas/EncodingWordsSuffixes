@@ -15,11 +15,12 @@ public class Decoding // converting numbers to words
 	{
 		this.reverseMap= new TreeMap<>();
 		
+		/*
 		// reversing key-vale pairs from encoded map
 		for (Map.Entry<Integer, String> entry : mappings.entrySet()) 
 		{
 			reverseMap.put(entry.getKey(), entry.getValue());
-		} // for(each)
+		} // for(each) */
 	} // Decoding
 	
 	public void decode(String in, String out)
@@ -38,24 +39,36 @@ public class Decoding // converting numbers to words
 				
 				for (String code : codes)
 				{
-					int number = Integer.parseInt(code);
-					String word = reverseMap.get(number);
-					
-					if (word != null) // word found
+					try 
 					{
-						decodedLine.append(word).append(" ");
-					} // if
+						int number = Integer.parseInt(code);
+						String word = reverseMap.get(number);
+						
+						if (word != null) // word found
+						{
+							decodedLine.append(word).append(" ");
+						} // if
+						
+						else // word no found
+						{
+							decodedLine.append(" unknown ??? ").append(" ");
+						} // else
+					} // try 
 					
-					else // word no found
+					catch (NumberFormatException e) 
 					{
-						decodedLine.append(" unknown ??? ").append(" ");
-					} // else
+						decodedLine.append(code).append(" ");
+					}					
 				} // for(each)
+				
+				// DEBUG
+				System.out.println("Decoded line: " + decodedLine.toString());
 				
 				write.write(decodedLine.toString().trim());
 				write.newLine();
 			} // while
 			
+			write.flush(); // DEBUG
 			System.out.println("Decoding complete, saved to " + out);
 		} // try
 		
