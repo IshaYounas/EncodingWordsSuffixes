@@ -32,4 +32,9 @@ public class LoadFile
 			System.err.println("Error: " + e.getMessage());
 		} // catch
 	} // parse
+	
+	public Map<String,Integer> getMappings() 
+	{
+		return m; // returning the map
+	} // getMappings
 } // class

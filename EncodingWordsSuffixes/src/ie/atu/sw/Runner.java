@@ -52,7 +52,7 @@ public class Runner
 		String fileOut = "./output.txt"; // default
 		String option;
 		Map<String, Integer> map = new TreeMap<>();	
-		
+				
 		boolean running = true;
 		
 		while (running) // program is still running
@@ -64,7 +64,7 @@ public class Runner
 			switch (option)
 			{
 				case "1":
-					System.out.println("Enter path to mappinng CSV file");
+					System.out.println("Enter path to mapping CSV file");
 					csvFile = keyboard.nextLine();
 					map = loadMap(csvFile);
 					break;
@@ -102,7 +102,6 @@ public class Runner
 						Encoding encoder = new Encoding(map); 
 						encoder.encode(fileIn, fileOut);
 					} // else
-						
 					break;
 					
 				case "6":
@@ -131,11 +130,11 @@ public class Runner
 						Decoding decoder = new Decoding(reverseMap); 
 						decoder.decode(fileIn, fileOut);
 					} // else
-					
 					break;
 					
 				case "?":
 					System.out.println("Quiting the program, goodbye!");	
+					running = false; // exiting the loop
 					break;
 					
 				default:
